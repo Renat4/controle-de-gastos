@@ -11,12 +11,24 @@ while True:
         descricao = input("Descrição: ")
         valor = float(input("Valor: "))
         
-        gastos.append((descricao, valor))
-        print("Gasto adicionado!")
+        gastos.append({
+            "descricao": descricao,
+            "valor": valor
+        })
 
     elif opcao == "2":
-        for gasto in gastos:
-            print(gasto)
+        if not gastos:
+            print('Nenhum gasto registrado')
+        else:
+            print('=-' *10)
+            for gasto in gastos:
+                print(f"{gasto['descricao']} - R$ {gasto['valor']}")
+
+            total = 0
+            for gasto in gastos:
+                total += gasto["valor"]
+            print(f'Total gasto: R$ {total}')
 
     elif opcao == "3":
+        print('Saindo...')
         break
